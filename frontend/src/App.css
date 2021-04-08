@@ -99,7 +99,13 @@ h6 {
 }
 .nav-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  justify-items: flex-start;
+}
+.nav-header-img{
+    height: 60px;
+    width: 250px;
+    flex: initial;
 }
 .nav-btn {
   background: transparent;
