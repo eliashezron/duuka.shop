@@ -8,7 +8,7 @@ const Home = ()=>{
         <Hero>
             <Banner title='Duuka.shop'
             subtitle='start your business in five minutes with a click of a button'>
-                <Link to='/login' className='btn-primary'>
+                <Link to='/Admin' className='btn-primary'>
                     sign Up
                 </Link>
             </Banner>
