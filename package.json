@@ -4,8 +4,11 @@
   "description": "online shop, shop, eccomerce",
   "main": "server.js",
   "type": "module",
+  "engines": {
+    "npm": ">=6.14.8",
+    "node": ">=14.13.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server",
     "server": "nodemon backend/server "
   },
@@ -35,6 +38,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.7"
   }
 }

@@ -24,6 +24,6 @@ app.use('/', (req, res)=> res.send('duuka.shop api is running'))
 app.use(notFound)
 app.use(errorHandler)
 
- const port = 5000;
+ const PORT = 5000;
 
- app.listen(port, `app is running in ${process.env.NODE_ENV} on ${port}`.yellow.bold)
+ app.listen(PORT, `app is running in ${process.env.NODE_ENV} on ${PORT}`.yellow.bold)
