@@ -50,7 +50,7 @@ import generateToken from '../Utils/generateToken.js'
         const users = await User.find({})
         res.json(users)
     })
-    // admin only route
+    // user only route
     const getUserProfile = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id)
  
@@ -66,7 +66,7 @@ import generateToken from '../Utils/generateToken.js'
      throw new Error('User not found')
    }
  })
-    // admin only route
+    // user only route
     const updateUserProfile = asyncHandler(async(req, res)=>{
         const user = await User.findById(req.user._id)
         if (user){
@@ -89,6 +89,37 @@ import generateToken from '../Utils/generateToken.js'
             throw new Error( "user not Found")
         }
     })
+    // admin only route
+    const getSingleUserProfile= asyncHandler(async(req, res)=>{
+        const user = await User.findById(req.params._id).select('-password')
+        if(user){
+            res.json(user)
+        }else{
+            res.status(404)
+            throw new Error("user not found")
+        }
+    })
+    //  admin only route
+    const UpdateSingleuserToAdmin = asyncHandler(async(req, res)=>{
+        const user = await User.findById(req.params._id).select('-password')
+        if(user){
+            user.isAdmin = req.body.isAdmin
+
+            const updateUser = await User.save()
+
+            res.json({
+                    _id:updateUser._id,
+                    name: updateUser.name,
+                    email:updateUser.email,
+                    telephoneNumber:updateUser.telephoneNumber,
+                    isAdmin: updateUser.isAdmin,
+                    })
+        } else {
+        res.status(404)
+        throw new Error('User not found')
+      }
+        
+    })
     //  admin access only
     const deleteUser = asyncHandler(async(req, res)=>{
         const user = await User.findById(req.user._id)
@@ -104,4 +135,4 @@ import generateToken from '../Utils/generateToken.js'
 
 
 
-export { registerUser, getAllUsers, loginUser, getUserProfile, deleteUser, updateUserProfile}
+export { registerUser, getAllUsers, loginUser, getUserProfile, deleteUser, updateUserProfile, UpdateSingleuserToAdmin, getSingleUserProfile}
