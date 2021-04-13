@@ -18,7 +18,7 @@ const app = express()
  if(process.env.NODE_ENV === 'development'){
      app.use(morgan('dev'))
  }
-app.use('/api/user', UserRoutes)
+app.use('/api/users', UserRoutes)
 app.use('/', (req, res)=> res.send('duuka.shop api is running'))
 
 app.use(notFound)
@@ -26,4 +26,4 @@ app.use(errorHandler)
 
  const PORT = 5000;
 
- app.listen(PORT, `app is running in ${process.env.NODE_ENV} on ${PORT}`.yellow.bold)
+ app.listen(PORT, console.log(`app is running in ${process.env.NODE_ENV} on ${PORT}`.yellow.bold))

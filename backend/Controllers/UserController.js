@@ -5,8 +5,8 @@ import generateToken from '../Utils/generateToken.js'
 // registering a user
 
     const registerUser = asyncHandler(async(req, res)=>{
-        const {userName, email, password}= req.body
-        const userExists = await User.findOne({userName, email})
+        const {name, email, password}= req.body
+        const userExists = await User.findOne({name, email})
 
         if(userExists){
             res.status(400)
@@ -14,12 +14,12 @@ import generateToken from '../Utils/generateToken.js'
         }
 
         const user = await User.create({
-            userName, email, password
+            name, email, password
         })
         if(user){
             res.status(201).json({
                 _id:user._id,
-                userName:user.userName,
+                name:user.name,
                 email:user.email,
                 token:generateToken(user._id)
             })
@@ -36,7 +36,7 @@ import generateToken from '../Utils/generateToken.js'
         if(user &&  (await user.matchPassword(password))){
             res.json({
                 _id: user._id,
-                userName:user.userName,
+                name:user.name,
                 email:user.email,
                 token:generateToken(user._id)
             })
@@ -91,7 +91,7 @@ import generateToken from '../Utils/generateToken.js'
     })
     // admin only route
     const getSingleUserProfile= asyncHandler(async(req, res)=>{
-        const user = await User.findById(req.params._id).select('-password')
+        const user = await User.findById(req.params.id).select('-password')
         if(user){
             res.json(user)
         }else{
@@ -101,7 +101,7 @@ import generateToken from '../Utils/generateToken.js'
     })
     //  admin only route
     const UpdateSingleuserToAdmin = asyncHandler(async(req, res)=>{
-        const user = await User.findById(req.params._id).select('-password')
+        const user = await User.findById(req.params.id).select('-password')
         if(user){
             user.isAdmin = req.body.isAdmin
 
@@ -122,7 +122,7 @@ import generateToken from '../Utils/generateToken.js'
     })
     //  admin access only
     const deleteUser = asyncHandler(async(req, res)=>{
-        const user = await User.findById(req.user._id)
+        const user = await User.findById(req.params.id)
         if(user){
             await User.remove()
             res.json({message: "user remove"})
