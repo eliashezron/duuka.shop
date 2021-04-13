@@ -7,6 +7,7 @@ import ConnectDB from './config/db.js'
 import UserRoutes from './Routes/UserRoutes.js'
 import colors from 'colors'
 import {notFound , errorHandler} from './Middleware/ErrorMiddleware.js'
+import bodyParser from 'body-parser'
 
 const __dirname = path.resolve(path.dirname(''))
 dotenv.config({path: __dirname + '/.env'})
@@ -14,7 +15,11 @@ dotenv.config({path: __dirname + '/.env'})
 ConnectDB()
 const app = express()
  app.use(cors())
+
+//  app.use(bodyParser.json())
+
  app.use(express.json())
+
  if(process.env.NODE_ENV === 'development'){
      app.use(morgan('dev'))
  }

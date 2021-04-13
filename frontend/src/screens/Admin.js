@@ -9,10 +9,11 @@ import PostIcon from '@material-ui/icons/Book';
 import UserIcon from '@material-ui/icons/Group';
 import DashBoard from "../components/DashBoard";
 import authProvider from './AuthProvider'
+import LoginPage from './Login'
 
 const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 const AdminScreen = () => (
-    <Admin authProvider={authProvider} dashboard={DashBoard} dataProvider={dataProvider}>
+    <Admin  dashboard={DashBoard} dataProvider={dataProvider}>
         <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon}/>
         <Resource name="users" list={UserList} icon={UserIcon} />
     </Admin>
