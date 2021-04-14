@@ -12,7 +12,8 @@ import {protect, admin} from '../Middleware/AuthMiddleware.js'
     const router = express.Router()
 
         router.route('/')
-        .get(protect, admin, getAllUsers)
+        .get(getAllUsers)
+        router.route('/register')
         .post(registerUser)
         router.route('/login')
         .post(loginUser)

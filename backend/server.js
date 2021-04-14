@@ -7,6 +7,7 @@ import ConnectDB from './config/db.js'
 import UserRoutes from './Routes/UserRoutes.js'
 import colors from 'colors'
 import {notFound , errorHandler} from './Middleware/ErrorMiddleware.js'
+import {rangeMiddleware} from './Middleware/RangeMiddleware.js'
 import bodyParser from 'body-parser'
 
 const __dirname = path.resolve(path.dirname(''))
@@ -23,11 +24,13 @@ const app = express()
  if(process.env.NODE_ENV === 'development'){
      app.use(morgan('dev'))
  }
-app.use('/api/users', UserRoutes)
+app.use(rangeMiddleware)
+app.use('/users', UserRoutes)
 app.use('/', (req, res)=> res.send('duuka.shop api is running'))
 
 app.use(notFound)
 app.use(errorHandler)
+
 
  const PORT = 5000;
 

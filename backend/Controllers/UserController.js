@@ -48,7 +48,9 @@ import generateToken from '../Utils/generateToken.js'
     // admin only route
     const getAllUsers = asyncHandler(async(req, res)=>{
         const users = await User.find({})
-        res.json(users)
+       
+       res.json(users)
+       
     })
     // user only route
     const getUserProfile = asyncHandler(async (req, res) => {
@@ -56,11 +58,11 @@ import generateToken from '../Utils/generateToken.js'
  
    if (user) {
      res.json({
-       _id: user._id,
-       name: user.name,
-       email: user.email,
-       isAdmin: user.isAdmin,
-     })
+      _id:user._id,
+         name: user.name,
+         email:user.email,
+         telephoneNumber:user.telephoneNumber,
+         isAdmin: user.isAdmin,})
    } else {
      res.status(404)
      throw new Error('User not found')

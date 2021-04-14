@@ -6,20 +6,25 @@ import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_REGISTER_FAIL } from '../C
  
 
 const authProvider = {
-     login: async({ email, password }) =>{
-         try{
-        const config = {headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, password })}
-        const{data}= await axios.post('https://5000-peach-iguana-gphbs0pv.ws-eu03.gitpod.io/login', config)
-        .then((res) => res.json())
-        .catch(error => {
-            console.error('Error:', error);
-        })
-         }catch(error){
-             throw new Error(error.response && error.response.data.message ?  error.response.data.message : error.message)
-         }
+    //  login: async({ email, password }) =>{
+    //      try{
+    //     const config = {headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, password })}
+    //     const{data}= await axios.post('https://5000-purple-pike-vzmhz2fm.ws-eu03.gitpod.io/login', config)
+    //     .then((res) => res.json())
+    //     .catch(error => {
+    //         console.error('Error:', error);
+    //     })
+    //      }catch(error){
+    //          throw new Error(error.response && error.response.data.message ?  error.response.data.message : error.message)
+    //      }
             
+    // },
+    // called when the user attempts to log in
+    login: ({ username }) => {
+        localStorage.setItem('username', username);
+        // accept all username/password combinations
+        return Promise.resolve();
     },
-
     logout: () => {
         localStorage.removeItem('username');
         return Promise.resolve();
