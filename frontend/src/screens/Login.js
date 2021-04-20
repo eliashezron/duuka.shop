@@ -7,12 +7,13 @@ const LoginPage = ({ theme }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const login = useLogin();
-    const notify = useNotify();
+    // const notify = useNotify();
     const submit = e => {
         e.preventDefault();
         // will call authProvider.login({ email, password })
-        login({ email, password }).catch(() =>
-            notify('Invalid email or password')
+        login({ email, password }).catch((error) =>
+            console.error('Invalid email or password')
+           
         );
     };
 

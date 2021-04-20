@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Admin, ListGuesser, Resource, EditGuesser } from 'react-admin';
-import jsonServerProvider from 'ra-data-json-server';
+// import simpleRestProvider from 'ra-data-simple-rest';
 // import restProvider from 'ra-data-simple-rest'
 import { UserList } from "../components/userList";
 import { PostList } from "../components/posts";

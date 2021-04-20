@@ -4,6 +4,7 @@ import Home from './screens/Home';
 import Error from './components/Error'
 import NavBar from './components/NavBar';
 import AdminScreen from './screens/Admin';
+import LoginPage from './screens/Login'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
     <Switch>
     <Route path='/' component={Home} exact/>
     <Route path='/admin' component={AdminScreen} />
+    <Route path='/login' component={LoginPage}/>
     <Route component={Error} exact/>
     </Switch>
    </Router>
