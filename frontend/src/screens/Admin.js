@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Admin, ListGuesser, Resource, EditGuesser } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
-import restProvider from 'ra-data-simple-rest'
+// import restProvider from 'ra-data-simple-rest'
 import { UserList } from "../components/userList";
 import { PostList } from "../components/posts";
 import { PostEdit } from "../components/postEdit";
@@ -11,9 +11,8 @@ import UserIcon from '@material-ui/icons/Group';
 import DashBoard from "../components/DashBoard";
 import authProvider from './AuthProvider'
 import LoginPage from './Login'
+import dataProvider from '../dataProvider'
 
-const dataProvider = restProvider('https://5000-purple-pike-vzmhz2fm.ws-eu03.gitpod.io');
-// const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 const AdminScreen = () => (
     <Admin authProvider={authProvider} dashboard={DashBoard} dataProvider={dataProvider}>
         <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon}/>

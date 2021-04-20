@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server",
-    "server": "nodemon backend/server --middlewares ./backend/Middleware/range.js",
+    "server": "nodemon backend/server",
     "dev": "npm run server",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d"

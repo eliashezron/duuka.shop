@@ -1,19 +1,17 @@
 import * as React from "react";
-import { List, Datagrid, TextField, EmailField, EditButton } from 'react-admin';
+import { List, Datagrid, TextField, EmailField, EditButton, SimpleList } from 'react-admin';
 import {makeStyles} from '@material-ui/core/styles'
 
-export const UserList = props => (
+export const UserList = props => {
+   
+    return(
     <List {...props}>
-        <Datagrid rowClick="edit">
+            <Datagrid rowClick="edit">
             <TextField source="id"/>
             <TextField source="name"/>
-            <TextField source="username" />
             <EmailField source="email" />
-            {/* <EditButton basepath='/'/> */}
-            <TextField source="address.street" />
-            <TextField source="phone" />
-            {/* <TextField source="website" /> */}
-            {/* <TextField source="company.name" /> */}
-        </Datagrid>
+            <TextField source="telephoneNumber" />
+            </Datagrid>
     </List>
-);
+    )
+};
