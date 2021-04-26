@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {AuthProvider} from './components/AuthContext'
 import Home from './screens/Home';
 import Error from './components/Error'
 import NavBar from './components/NavBar';
@@ -8,6 +9,7 @@ import LoginPage from './screens/Login'
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
         <NavBar/>
     <Switch>
@@ -17,6 +19,7 @@ function App() {
     <Route component={Error} exact/>
     </Switch>
    </Router>
+   </AuthProvider>
   );
 }
 

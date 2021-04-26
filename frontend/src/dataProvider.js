@@ -1,7 +1,7 @@
 import { fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 
-const apiUrl = 'https://5000-copper-bird-kmvohk2j.ws-eu03.gitpod.io';
+const apiUrl = 'https://5000-olive-koala-l50544zt.ws-eu03.gitpod.io';
 const httpClient = fetchUtils.fetchJson;
 
 export default {
