@@ -21,14 +21,6 @@ function Login(props) {
         e.preventDefault()
         loginUser(dispatch, {email, password})
          props.history.push('/admin')
- 
-        // try {
-        //     let response = await loginUser(dispatch, { email, password })
-        //     if (!response.userInfo) return
-        //     props.history.push('/admin')
-        // } catch (error) {
-        //     console.log(error)
-        // }
     }
  
     return (

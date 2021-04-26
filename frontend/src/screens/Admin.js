@@ -11,10 +11,11 @@ import UserIcon from '@material-ui/icons/Group';
 import DashBoard from "../components/DashBoard";
 import authProvider from './AuthProvider'
 import LoginPage from './Login'
+import MyLoginPage from './Loginpage'
 import dataProvider from '../dataProvider'
 
 const AdminScreen = () => (
-    <Admin authProvider={authProvider} dashboard={DashBoard} dataProvider={dataProvider}>
+    <Admin authProvider={authProvider} dashboard={DashBoard} dataProvider={dataProvider} loginPage={MyLoginPage}>
         <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon}/>
         <Resource name="users" list={UserList} icon={UserIcon} />
     </Admin>
