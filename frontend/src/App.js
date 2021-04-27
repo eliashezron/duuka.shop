@@ -14,7 +14,7 @@ function App() {
         <NavBar/>
     <Switch>
     <Route path='/' component={Home} exact/>
-    <Route path='/admin' component={AdminScreen} />
+    <Route path='/admin' component={AdminScreen} replace />
     <Route path='/login' component={LoginPage}/>
     <Route component={Error} exact/>
     </Switch>

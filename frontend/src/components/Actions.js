@@ -1,4 +1,4 @@
-const ROOT_URL = 'https://5000-olive-koala-l50544zt.ws-eu03.gitpod.io/users';
+const ROOT_URL = 'https://5000-blue-skunk-59vtk2x5.ws-eu03.gitpod.io/users';
  
 export async function loginUser(dispatch, loginPayload) {
 	const requestOptions = {
@@ -14,7 +14,7 @@ export async function loginUser(dispatch, loginPayload) {
 
 		if (data.user) {
 			dispatch({ type: 'LOGIN_SUCCESS', payload: data });
-			localStorage.setItem('currentUser', JSON.stringify(data));
+			localStorage.setItem('userInfo', JSON.stringify(data));
 			return data;
 		}
 		return;
@@ -26,6 +26,6 @@ export async function loginUser(dispatch, loginPayload) {
 
 export async function logout(dispatch) {
 	dispatch({ type: 'LOGOUT' });
-	localStorage.removeItem('currentUser');
-	localStorage.removeItem('token');
+	localStorage.removeItem('userInfo');
+	// localStorage.removeItem('token');
 }

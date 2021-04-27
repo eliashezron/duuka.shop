@@ -1,5 +1,7 @@
-import React,{useState} from 'react';
- 
+import React,{useState, useEffect} from 'react';
+
+import { useLogin, useNotify, Notification, defaultTheme } from 'react-admin';
+
 import styles from './login.css';
 
 import { loginUser} from '../components/Actions'
@@ -12,16 +14,28 @@ function Login(props) {
     const [password, setPassword] = useState('')
  
     const dispatch = useAuthDispatch()
-    const { loading, errorMessage } = useAuthState() //read the values of loading and errorMessage from context
- 
- 
- 
- 
-    const handleLogin = async (e) => {
-        e.preventDefault()
-        loginUser(dispatch, {email, password})
-         props.history.push('/admin')
-    }
+    const { loading, errorMessage, userInfo } = useAuthState() //read the values of loading and errorMessage from context
+    
+    //  useEffect(()=>{
+    //     if(userInfo){
+    //         history.push('/admin')
+    //     }
+    // }, [history, userInfo])
+    // const login = useLogin();
+    // const notify = useNotify();
+    const submit = async(e) => {
+        e.preventDefault();
+        // will call authProvider.login({ email, password })
+        loginUser(dispatch, { email, password })
+        if(userInfo){
+            props.history.push('/admin')
+        }
+    };
+    // const handleLogin = async (e) => {
+    //     e.preventDefault()
+    //     loginUser(dispatch, {email, password})
+    //      props.history.push('/admin')
+    // }
  
     return (
         <div className={styles.container}>
@@ -30,19 +44,20 @@ function Login(props) {
                 {
                     errorMessage ? <p className={styles.error}>{errorMessage}</p> : null
                 }
-                <form >
+                <form onSubmit={submit} >
                     <div className={styles.loginForm}>
                         <div className={styles.loginFormItem}>
                             <label htmlFor="email">Username</label>
-                            <input type="text" id='email' value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} />
+                            <input type="text" id='email' value={email} onChange={(e) => setEmail(e.target.value)} />
                         </div>
                         <div className={styles.loginFormItem}>
                             <label htmlFor="password">Password</label>
-                            <input type="password" id='password' value={password} onChange={(e) => setPassword(e.target.value)} disabled={loading} />
+                            <input type="password" id='password' value={password} onChange={(e) => setPassword(e.target.value)}  />
                         </div>
                     </div>
-                    <button onClick={handleLogin} disabled={loading}>login</button>
+                    <button type='submit'>login</button>
                 </form>
+                {/* <Notification /> */}
             </div>
         </div>
     )
